@@ -1,16 +1,19 @@
-<?php  
-	session_start();
-	include_once 'configurazioneDB.php';
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Successo</title>
+  <title>Borsa delle idee - Successo</title>
  <?php 
-
- $email=$_POST['email'];
+ include_once 'configurazioneDB.php';
  $psw=$_POST['password'];
- $comando= "update azienda set psw =  '$psw' where email='" . $email . "' ";
+ $get_email=$_GET['email'];
+ $get_tipo=$_GET['tipo'];
+ if($get_tipo=='azienda'){
+ $comando= "update azienda set psw =  '$psw' where email='" . $get_email . "' ";
+ }
+ else if($get_tipo=='utente'){
+ $comando= "update utenti set psw =  '$psw' where email='" . $get_email . "' ";
+ }
  $result=mysqli_query($conn,$comando);
  if(!$result)
  	die("Modifica non valida: " . mysql_error());
