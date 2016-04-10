@@ -31,7 +31,7 @@ include_once 'configurazioneDB.php';
     //(multipart) le quali sono tra loro alternative. Separate dal BOUNDARY
     $headers .= "Content-type: multipart/alternative; boundary='$boundary'\r\n";
     // costruiamo intestazione generale
-    $headers .= "From: miaemail@gmail.com \r\n";
+    $headers .= "From: Borsa delle idee \r\n";
     // Check to see if a user exists with this e-mail
     //questa parte del messaggio viene visualizzata
     // solo se il programma non sa interpretare
