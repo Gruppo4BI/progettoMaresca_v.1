@@ -19,7 +19,7 @@ include_once 'configurazioneDB.php';
     $subject = "Crea la tua nuova password qui";
     //Messaggio di conferma
     $confirmmessage = "Salve, ";
-    $confirmmessage .= "ci è pervenuta una richiesta di reset password per il tuo account. Per creare una nuova password clicca o copia e incolla sulla barra di ricerca il seguente link, ";
+    $confirmmessage .= "ci è pervenuta una richiesta di reset password per l'account "$email". Per creare una nuova password clicca o copia e incolla sulla barra di ricerca il seguente link, ";
     //ai fini della sicurezza e per risolvere eventuali problemi di concorrenza al link viene associato il codice randomico, l'email e il tipo
     $confirmmessage .= "http://borsaidee.altervista.org/nuova_password.php""?code=$code&email=$email&tipo=$tipo";
     
