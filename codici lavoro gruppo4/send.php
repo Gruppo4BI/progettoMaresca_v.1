@@ -18,10 +18,10 @@ include_once 'configurazioneDB.php';
     $to ="$email";
     $subject = "Crea la tua nuova password qui";
     //Messaggio di conferma
-    $confirmmessage = "Salve,\n\n";
-    $confirmmessage .= "per creare una nuova password clicca sul link sottostante:\n\n";
+    $confirmmessage = "Salve, ";
+    $confirmmessage .= "ci è pervenuta una richiesta di reset password per il tuo account. Per creare una nuova password clicca o copia e incolla sulla barra di ricerca il seguente link, ";
     //ai fini della sicurezza e per risolvere eventuali problemi di concorrenza al link viene associato il codice randomico, l'email e il tipo
-    $confirmmessage .= "<a href='nuova_password.php "."?code=$code&email=$email&tipo=$tipo>clicca qui per creare la password</a>.";
+    $confirmmessage .= "http://borsaidee.altervista.org/nuova_password.php""?code=$code&email=$email&tipo=$tipo";
     
     $boundary = "==MP_Bound_xyccr948x=="; /*Separatore per il "multipart message"*/
     	
