@@ -1,5 +1,15 @@
-<?php session_start();
- $email=$_SESSION['email'];?>
+<!-- La pagina nuova_password.php viene acceduta dal link mandato all' indirizzo di posta elettronica dell' azienda e
+permette di inserire in una form la nuova password --!>
+<?php 
+//connessione al database
+include_once 'configurazioneDB.php';
+//prelevo codice tipo e email associate al link affinche' si possano modificare i dati corrispondenti all' azienda corretta
+ if($_GET['code']){
+ 	$get_code=$_GET['code'];  
+ 	$get_email=$_GET['email'];
+ 	$get_tipo=$_GET['tipo'];
+ }
+ ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,16 +17,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    
-    
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> 
-
-    <title>Bootstrap 101 Template</title>
+    <title>Borsa delle idee - Reset password</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -36,17 +42,19 @@
                          <i class="fa fa-refresh fa-3x"></i></h3>
                           <h3><i class="fa fa-lock fa-4x"></i></h3>  <h3>
                           <h2 class="text-center">Password Reset</h2>
-                          <p>Inserisci la tua email e una nuova password</p>
+                          <p>Inserisci la nuova password</p>
                             <div class="panel-body">
                               
-                              <form class="form" name="new_password" action="pswUpdate.php" method="POST" >
+                              <form class="form" name="new_password" action="<?php echo"pswUpdate.php?email=$get_email&tipo=$get_tipo" ?>" method="POST" >
                                 <fieldset>
                                   <div class="form-group">
                                     
                                     <div class="input-group">
                                       <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
                                       
-                                      <input id="email" name="email"  readonly placeholder="<?php echo $email ?>" class="form-control" type="email" oninvalid="setCustomValidity('Inserisci una password valida')" onchange="try{setCustomValidity('')}catch(e){}" required="">
+                                      <!-- Nel campo relativo all' email non si potra' inserire nulla, l' email verra' mostrata automaticamente e non puo' essere modificata  grazie al readonly placeholder-->
+                                      
+                                      <input id="email" name="email"  readonly placeholder="<?php echo $get_email ?>" class="form-control" type="email" oninvalid="setCustomValidity('Inserisci una password valida')" onchange="try{setCustomValidity('')}catch(e){}" required="">
                                     </div>
                                     
                                     <div class="input-group">
