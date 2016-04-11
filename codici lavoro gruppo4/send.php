@@ -56,7 +56,7 @@ include_once 'configurazioneDB.php';
   				echo "<br>";
   				echo "Per creare una nuova password devi aprire la tua casella e-mail, leggere il messaggio  e cliccare sul link che troverai all'interno.<br><br>Tra pochi secondi verrai reindirizzato alla pagina di login</body>";
   				// reindirizzamento a tempo alla pagina di login
-  				header( "refresh:10;LOGIN2.php" );
+  				header( "refresh:10;index.php" );
   			}
   			else {
   				echo "<body style='background-color:#8080ff; font-family: monospace; font-size: x-large; color: white; text-align: center;'>
@@ -69,6 +69,6 @@ include_once 'configurazioneDB.php';
   		    L' email inserita non e' corretta </body>"; }
   	         }
  
-   	      header( "refresh:10;LOGIN2.php" );
+   	      header( "refresh:10;index.php" );
    
    ?>
