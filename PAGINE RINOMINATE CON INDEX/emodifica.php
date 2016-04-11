@@ -27,7 +27,7 @@ $query_tel="SELECT * FROM telefoni where id!='".$idTelefono."'";
 		while	($row = mysqli_fetch_assoc($result2) ){
 								if( $numero == $row[numero]){
 									header("location: modificaW.php?errore=1");
-									echo errore;
+									exit;
 													}	
 						}
 
