@@ -25,6 +25,6 @@
   <strong>La tua nuova password e' stata registrata con successo! Ora verrai reindirizzato alla pagina di login </strong> <i class="fa fa-spinner fa-spin"></i>
 </div>
 <?php
-header( "refresh:4 ;LOGIN2.php" );
+header( "refresh:4 ;index.php" );
 ?>
 </head>
