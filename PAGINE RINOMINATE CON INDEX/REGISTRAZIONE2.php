@@ -17,6 +17,7 @@
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/Controlli.js"></script>
 		<style >
 				@keyframes evidenzia{
 					from{color:black;font-weight: bold;}
@@ -42,8 +43,7 @@
 			</h1>
 				<div class="col-lg-12 well" style='background-color:white; margin-top:-22px;'>
 					<div class="row">
-					<form name='registra' id='registra' onSubmit="return controllo();" action='eRegistra.php' method='POST' id="registra">
-						<div class="col-sm-12">
+					<form name="modulo" id="modulo" onSubmit="return controllo();" method="post" action='eRegistra.php' >
 											<?php
 												 if( isset($_GET['errore']) )
 												 {
@@ -69,15 +69,15 @@
 							<div class="row">
 								<div class="col-sm-4 form-group">
 									<label class='star' >* </label> <label >Nome azienda:</label>
-									<input  type="text"  value='' name='nomeAZ'  class="form-control" required>
+									<input  type="text"  id='nomeAZ' name='nomeAZ'  class="form-control" required >
 								</div>
 								<div class="col-sm-4 form-group">
 									<label class='star' >* </label> <label>Persona di riferimento:</label>
-									<input  type="text" value='' name='personaRif' required class="form-control"></br>
+									<input  type="text" id='personaRif' name='personaRif'  class="form-control" required></br>
 								</div>
 								<div class="col-sm-4 form-group">
 									<label class='star' >* </label> <label>Ruolo nell'azienda:</label>
-									<input  type="text" value='' name='ruolo' required class="form-control" placeholder="Il tuo ruolo all'interno dell'azienda"></br>
+									<input  type="text" id='ruolo' name='ruolo' required class="form-control" placeholder="Il tuo ruolo all'interno dell'azienda"></br>
 								</div>
 
 	                            
@@ -99,31 +99,31 @@
 	                            
 	                            <div class="col-sm-4 form-group">
 	    							<label class='star'>* </label> <label>Partita IVA o Codice Fiscale:</label>
-									<input type="text" value='' name='cf' required class="form-control">
+									<input type="text" id='cf' name='cf'  required class="form-control">
 								</div>
 	                            
 	                            <div class="col-sm-4 form-group">
 	    							<label>Sito web:</label>
-									<input type="text" value='' name='sitoweb' class="form-control">
+									<input type="text" id='sitoweb' name='sitoweb' class="form-control">
 								</div>
 	                                    
 						</div>					
 							<div class="form-group">
 								<label>Maggiori dettagli:</label>
-									<textarea value='' name='parlaci' placeholder="Qualcosa sulla tua azienda..." class="form-control"></textarea>
+									<textarea id='parlaci' name='parlaci' placeholder="Qualcosa sulla tua azienda..." class="form-control"></textarea>
 							</div>	
 							<div class="row">
 								<div class="col-sm-4 form-group">
 									<label class='star'>* </label> <label>Citta:</label>
-									<input type='text' value='' name='citta' required class="form-control">
+									<input type='text' id='citta' name='citta'  required class="form-control">
 								</div>	
 								<div class="col-sm-4 form-group">
 									<label class='star'>* </label> <label>CAP:</label>
-									<input type="number" value='' name='cap' required class="form-control">
+									<input type="tel" pattern="[0-9]{1,15}" id='cap' name='cap'  required class="form-control">
 								</div>	
 								<div class="col-sm-4 form-group">
 									<label class='star'>* </label> <label>Indirizzo:</label>
-									<input type='text' value='' name='indirizzo' required class="form-control">
+									<input type='text' id='indirizzo' name='indirizzo' required  class="form-control">
 								</div>		
 							</div>
 							<div class="row">
@@ -144,16 +144,16 @@
 								</div>		
 								<div class="col-sm-6 form-group">
 									<label class='star'>* </label> <label>Telefono:</label>
-									<input type="tel" pattern="[0-9]{1,15}" value='' name='telefono' required class="form-control" >
+									<input type="tel" pattern="[0-9]{1,15}"  id='telefono' name='telefono' required class="form-control" >
 								</div>	
 							</div>						
 						<div class="col-sm-4 form-group">
 							<label>Fax</label>
-							<input type="tel" pattern="[0-9]{1,15}" value='' name='fax' class="form-control">
+							<input type="tel" pattern="[0-9]{1,15}" id='fax' name='fax' class="form-control">
 						</div>		
 						<div class="col-sm-4 form-group">
 							<label>Secondo telefono:</label>
-							<input type="tel" pattern="[0-9]{1,15}" value='' name='telefono2' class="form-control">
+							<input type="tel" pattern="[0-9]{1,15}" id='telefono2' name='telefono2' class="form-control">
 						</div>	
 						<div class="col-sm-4 form-group">
 							<label>Cellulare:</label>
@@ -162,21 +162,21 @@
 						
 						<div class="col-sm-6 form-group">
 							<label class='star'>* </label> <label data-toggle="tooltip" title="Questo campo <?php  echo '&egrave '?> necessario per l'eventuale recupero o modifica delle credenziali.">Domanda di sicurezza:</label>
-							<input type='text'  name='domanda'  required class="form-control">
+							<input type='text'  name='domanda' id='domanda' required class="form-control">
 						</div>
 						<div class="col-sm-6 form-group">
 							<label class='star'>* </label> <label>Risposta:</label>
-							<input type='text' value='' name='risposta' required class="form-control">
+							<input type='text' id='risposta' name='risposta' required class="form-control">
 						</div>						
 						
 						
 						<div class="col-sm-6 form-group">
 							<label class='star'>* </label> <label>Indirizzo email:</label>
-							<input type='email' value='' name='email' placeholder="Inserisci la tua email... " required class="form-control">
+							<input type='email' required id='email' name='email' placeholder="Inserisci la tua email... "  class="form-control">
 						</div>
 						<div class="col-sm-6 form-group">
 							<label class='star'>* </label> <label>Password:</label>
-							<input type='Password' value='' name='psw' required class="form-control">
+							<input type='Password' id='psw' name='psw' required class="form-control">
 						</div>
 						<div class="form-group">
 								<label>Prima della registrazione, leggi con attenzione l'informativa sul trattamento dei dati personali:</label>
@@ -231,30 +231,14 @@ L'utente, potr&agrave richiedere di integrare, modificare o cancellare i dati, i
 							</div>
 						<div>
 							<label class='star'>* </label><label>Ho letto e accetto</label>
-							<input type="checkbox" id='accetta' name='CheckThis' required >
+							<input type="checkbox" id='CheckThis' required name='CheckThis' >
 						</div>	
 						
-						<input id='bottone' type='submit'  class='btn btn-primary' value='Registrati' name='registrati'/>					
+						<input type='submit'  class='btn btn-primary' value='Registrati' name='Submit'/>					
 						</div>
 					</form> 
 				</div>
 			</div>
 		</div>
-		<script language="JavaScript"> 
-			function controllo(){ 
-				with(document.registra) { 
-					if(!CheckThis.checked) {  
-						CheckThis.focus(); 
-						return false; 
-						} 
-					} 
-			return true; 
-			} 
-		</script>
-		<script>
-	$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();   
-});
-</script>
 	</body>
 	</html>
